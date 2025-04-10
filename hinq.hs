@@ -155,3 +155,15 @@ finalResult :: [Name]
 finalResult = _hinq (_select (teacherName . fst))
                     (_join teachers courses teacherId teacher)
                     (_where ((== "English") .courseTitle . snd))
+
+
+-- モナドへ
+import Control.Applicative
+-- _select :: ( a -> b ) -> [a] -> [b]
+_select :: Monad m => ( a -> b ) -> m a -> m b
+
+-- _where :: ( a -> Bool ) -> [a] -> [a]
+_where :: ( Monad m, Alternative m ) => (a -> Bool) -> m a -> m a
+
+-- _join :: [a] -> [b] -> (a -> c) -> (b -> c) -> [(a, b)]
+_join :: (Monad m, Alternative m, Eq c) => m a -> m b -> (a -> c) -> (b -> c) -> m (a, b)
