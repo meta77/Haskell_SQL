@@ -150,3 +150,8 @@ _hinq select join where
 → (\w -> select w) (where join)
 → select (where join)
 -}
+
+finalResult :: [Name]
+finalResult = _hinq (_select (teacherName . fst))
+                    (_join teachers courses teacherId teacher)
+                    (_where ((== "English") .courseTitle . snd))
