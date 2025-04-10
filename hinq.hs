@@ -106,3 +106,8 @@ _hinq selectQuery joinQuery whereQuery = (\joinData ->
                                                 selectQuery whereResult)
                                             (whereQuery joinData)
                                         ) joinQuery
+
+{-
+joinQueryの例
+joinQuery = [("Alice", 1), ("Bob", 2), ("Carol", 3)]
+-}
