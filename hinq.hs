@@ -126,3 +126,25 @@ result = _hinq selectQuery joinQuery whereQuery
 {-
 イメージは、_hinq select join where = select (where join)
 -}
+
+{-
+ステップ 1：関数に joinQuery を渡す
+→ (\whereResult -> selectQuery whereResult) (whereQuery [("Alice", 1), ("Bob", 2), ("Carol", 3)])
+
+ステップ 2：whereQuery を適用する
+filter (\(_, id) -> id == 1) [("Alice", 1), ("Bob", 2), ("Carol", 3)]
+→ [("Alice", 1)] -- id が 1 のものだけ残る
+結果
+(\whereResult -> selectQuery whereResult) [("Alice", 1)]
+
+ステップ 3：selectQuery を適用する
+selectQuery [("Alice", 1)]
+→ map fst [("Alice", 1)]
+→ ["Alice"]
+
+まとめ
+_hinq select join where
+→ (\j -> (\w -> select w) (where j)) join
+→ (\w -> select w) (where join)
+→ select (where join)
+-}
