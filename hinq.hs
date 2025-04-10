@@ -122,3 +122,7 @@ whereQuery = filter (\(_, id) -> id == 1)
 result = _hinq selectQuery joinQuery whereQuery
 => ["Alice"]
 -}
+
+{-
+イメージは、_hinq select join where = select (where join)
+-}
