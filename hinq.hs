@@ -124,7 +124,9 @@ result = _hinq selectQuery joinQuery whereQuery
 -}
 
 {-
-イメージは、_hinq select join where = select (where join)
+(\x -> f x) a == f なのだから、
+_hinq select join where = select (where join)
+実態は関数適用しているだけ
 -}
 
 {-
