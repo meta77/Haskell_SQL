@@ -111,3 +111,14 @@ _hinq selectQuery joinQuery whereQuery = (\joinData ->
 joinQueryの例
 joinQuery = [("Alice", 1), ("Bob", 2), ("Carol", 3)]
 -}
+
+{-
+実行例
+
+selectQuery = map fst
+joinQuery = [("Alice", 1), ("Bob", 2), ("Carol", 3)]
+whereQuery = filter (\(_, id) -> id == 1)
+
+result = _hinq selectQuery joinQuery whereQuery
+=> ["Alice"]
+-}
