@@ -172,6 +172,13 @@ class Applicative f => Alternative f where
 
 　empty は「失敗」や「空っぽ」を表します。
 　<|> は「選択肢の中から成功するものを選ぶ」操作です。
+
+リストをフィルターする例
+_where even [1,2,3,4]  -- => [2,4]
+→中身の処理はこれ
+do val <- [1,2,3,4]
+   guard (even val)
+   return val
 -}
 
 -- _join :: [a] -> [b] -> (a -> c) -> (b -> c) -> [(a, b)]
