@@ -165,6 +165,12 @@ _select :: Monad m => ( a -> b ) -> m a -> m b
 -- _where :: ( a -> Bool ) -> [a] -> [a]
 _where :: ( Monad m, Alternative m ) => (a -> Bool) -> m a -> m a
 -- Alternative m の意図　　フィルターのような「値を通す／落とす」制御がしたいとき
+{-
+class Applicative f => Alternative f where
+    empty  :: f a
+    (<|>)  :: f a -> f a -> f a
+
+-}
 
 -- _join :: [a] -> [b] -> (a -> c) -> (b -> c) -> [(a, b)]
 _join :: (Monad m, Alternative m, Eq c) => m a -> m b -> (a -> c) -> (b -> c) -> m (a, b)
