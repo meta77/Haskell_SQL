@@ -170,6 +170,8 @@ class Applicative f => Alternative f where
     empty  :: f a
     (<|>)  :: f a -> f a -> f a
 
+　empty は「失敗」や「空っぽ」を表します。
+　<|> は「選択肢の中から成功するものを選ぶ」操作です。
 -}
 
 -- _join :: [a] -> [b] -> (a -> c) -> (b -> c) -> [(a, b)]
