@@ -68,7 +68,6 @@ _where test vals = do
 {-
 guard (test val)
 test val を評価し、True ならそのまま処理を継続。
-
 False ならそのルート（その val）を捨てる（＝無視する）。
 
 guard の戻り値は () だが、副作用として フィルタリングの効果を持つ！
