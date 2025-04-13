@@ -42,7 +42,7 @@ return は、「prop val をリストとして返す」という意味になる�
 
 {-
 やってることはmapと同じ！！！
-map f xs ≡ do { x <- xs; return (f x) }
+map f xs = do { x <- xs; return (f x) }
 
 _select は map と同じ操作を リストモナド + do記法 で書いたバージョンです。
 -}
