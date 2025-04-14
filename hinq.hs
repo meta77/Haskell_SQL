@@ -8,6 +8,7 @@ instance Show Name where
 -- 学年のモデル化
 data GradeLevel = Freshman | Sophomore | Junior | Senior deriving (Eq, Ord, Enum, Show)
 
+-- Studentのモデル化
 data Student = Student { studentId :: Int, gradeLevel :: GradeLevel, studentName::Name } deriving Show
 
 students :: [Student]
