@@ -11,6 +11,7 @@ data GradeLevel = Freshman | Sophomore | Junior | Senior deriving (Eq, Ord, Enum
 -- Studentのモデル化
 data Student = Student { studentId :: Int, gradeLevel :: GradeLevel, studentName::Name } deriving Show
 
+-- データベースのモデル化　リストで表現
 students :: [Student]
 students = [(Student 1 Senior (Name "Audre" "Lorde")),
             (Student 2 Junior (Name "Leslie" "Silko")),
@@ -19,6 +20,12 @@ students = [(Student 1 Senior (Name "Audre" "Lorde")),
             (Student 5 Sophomore (Name "Jean" "Baudrillard")),
             (Student 6 Junior (Name "Julia" "Kristeva"))
             ]
+
+
+
+
+-- 2 リストに対する基本的なクエリの準備
+
 
 -- _select関数は単なるfmapである
 _select :: ( a -> b ) -> [a] -> [b]
