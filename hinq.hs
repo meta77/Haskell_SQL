@@ -1,3 +1,6 @@
+-- 1 準備
+
+-- 名前のモデル化
 data Name = Name { firstName ::String, lastName ::String }
 instance Show Name where
     show (Name first last) = mconcat [first, " ", last]
