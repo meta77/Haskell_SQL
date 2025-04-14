@@ -83,7 +83,7 @@ _select (+1) [1,2,3]
 
 -}
 
--- クエリのフィルタリングが可能
+-- _where
 import Control.Monad
 
 _where :: ( a -> Bool ) -> [a] -> [a]
