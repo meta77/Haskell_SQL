@@ -119,9 +119,11 @@ startsWith char string = char == (head string)
 -- Teacherのモデル化
 data Teacher = Teacher { teacherId :: Int, teacherName :: Name } deriving Show
 
+-- Teacherのテーブルをリストでモデル化
 teachers::[Teacher]
 teachers = [ Teacher 100 (Name "Simone" "DeBeauvior"), Teacher 200 (Name "Susan" "Sontag")]
 
+-- Courseのモデル化
 data Course = Course { courseId::Int, courseTitle::String, teacher::Int } deriving Show
 
 courses::[Course]
