@@ -106,6 +106,7 @@ guard の戻り値は () だが、副作用として フィルタリングの効
 guard は「条件を満たさないとそのパスを打ち切る」という意味で、モナドで条件分岐をするための道具です。
 -}
 
+-- _whereに渡すヘルパー関数の例
 startsWith :: Char -> String -> Bool
 startsWith char string = char == (head string)
 
