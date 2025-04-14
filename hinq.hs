@@ -26,7 +26,6 @@ students = [(Student 1 Senior (Name "Audre" "Lorde")),
 
 -- 2 リストに対する基本的なクエリの準備
 
-
 -- _select関数は単なるfmapである
 _select :: ( a -> b ) -> [a] -> [b]
 _select prop vals = do
