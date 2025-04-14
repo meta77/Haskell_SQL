@@ -112,6 +112,8 @@ startsWith char string = char == (head string)
 
 
 
+
+
 -- 3 joinを実装するために、追加でテーブルを準備
 
 data Teacher = Teacher { teacherId::Int, teacherName::Name } deriving Show
