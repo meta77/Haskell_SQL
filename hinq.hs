@@ -1,13 +1,14 @@
 -- 1 準備
 
 -- 名前のモデル化
-data Name = Name { firstName ::String, lastName ::String }
+data Name = Name { firstName :: String, lastName :: String }
 instance Show Name where
     show (Name first last) = mconcat [first, " ", last]
 
+-- 学年のモデル化
 data GradeLevel = Freshman | Sophomore | Junior | Senior deriving (Eq, Ord, Enum, Show)
 
-data Student = Student { studentId :: Int, gradeLevel :: GradeLevel, studentName::Name} deriving Show
+data Student = Student { studentId :: Int, gradeLevel :: GradeLevel, studentName::Name } deriving Show
 
 students :: [Student]
 students = [(Student 1 Senior (Name "Audre" "Lorde")),
