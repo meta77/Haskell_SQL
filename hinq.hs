@@ -116,7 +116,8 @@ startsWith char string = char == (head string)
 
 -- 3 joinを実装するために、追加でテーブルを準備
 
-data Teacher = Teacher { teacherId::Int, teacherName::Name } deriving Show
+-- Teacherのモデル化
+data Teacher = Teacher { teacherId :: Int, teacherName :: Name } deriving Show
 
 teachers::[Teacher]
 teachers = [ Teacher 100 (Name "Simone" "DeBeauvior"), Teacher 200 (Name "Susan" "Sontag")]
