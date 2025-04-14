@@ -114,7 +114,7 @@ startsWith char string = char == (head string)
 
 
 
--- 3 joinを実装するために、追加でテーブルを準備
+-- 3 joinを実装するために、追加でテーブルを準備。
 
 -- Teacherのモデル化
 data Teacher = Teacher { teacherId :: Int, teacherName :: Name } deriving Show
@@ -126,10 +126,12 @@ teachers = [ Teacher 100 (Name "Simone" "DeBeauvior"), Teacher 200 (Name "Susan"
 -- Courseのモデル化
 data Course = Course { courseId::Int, courseTitle::String, teacher::Int } deriving Show
 
+-- Courseのテーブルをリストでモデル化
 courses::[Course]
 courses = [Course 101 "French" 100, Course 201 "English" 200]
 
-_join :: [a] -> [b] -> (a -> c) -> (b -> c) -> [(a, b)]
+-- 内部結合
+_join :: Eq c => [a] -> [b] -> (a -> c) -> (b -> c) -> [(a, b)]
 _join data1 data2 prop1 prop2 = do
     d1 <- data1
     d2 <- data2
@@ -139,6 +141,13 @@ _join data1 data2 prop1 prop2 = do
 
 --　似たSQL
 -- SELECT * FROM data1, data2 WHERE data1.id = data2.id;
+
+
+
+
+
+
+
 
 -- _hinq関数はクエリの再構築を可能にする
 _hinq selectQuery joinQuery whereQuery = (\joinData ->
