@@ -92,15 +92,18 @@ _where test vals = do
     guard (test val)
     return val
 
--- Haskell の リストモナド + guard関数 を使って、filter のような動作を実現する関数 _where を定義しています。
-
 {-
+guard
+guard :: (Alternative f) => Bool -> f ()
+guard False = empty
+guard True = pure () のように動く。
+
 guard (test val)
 test val を評価し、True ならそのまま処理を継続。
 False ならそのルート（その val）を捨てる（＝無視する）。
 
 guard の戻り値は () だが、副作用として フィルタリングの効果を持つ！
-guard は「条件を満たさないと、そのパスを打ち切る」という意味で、モナドで条件分岐をするための道具です。
+guard は「条件を満たさないとそのパスを打ち切る」という意味で、モナドで条件分岐をするための道具です。
 -}
 
 startsWith :: Char -> String -> Bool
