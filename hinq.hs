@@ -33,32 +33,42 @@ _select prop vals = do
     return (prop val)
 
 {-
-val <- vals
-意味： vals というリストから一つずつ val を取り出す。
+fmap（または map）と同じことを、do記法とリストモナドを使って表現している。
+実質的には map prop vals と同じ処理。
 
-これは vals = [1,2,3] のとき：
+prop
+これは関数です。引数として受け取ります。
+
+vals
+これはリストです。これも引数で受け取ります。
+
+do val <- vals
+これは リストモナド の文法で、vals から要素を1つずつ取り出して val に代入します。
+裏ではリスト内包と同じ意味になります。
+
+ex
+vals = [1,2,3] のとき：
 val = 1
 val = 2
 val = 3
-と3回繰り返されます（暗黙に繰り返される！）
--}
+と3回繰り返されます。
 
-{-
 return (prop val)
 val に prop（関数）を適用して、prop val を計算する。
-return は、「prop val をリストとして返す」という意味になる（リストモナドなので）。
+return は、リストモナドという文脈なので、「prop val をリストとして返す」という意味になる。
 例：return 2 = [2]
 各 val に対して [prop val] が作られ、すべてが結合されて最終的な [b] ができる。
--}
+ex
+_select (*2) [1,2,3]
+→
+val = 1 → return (1*2) = [2]
+val = 2 → return (2*2) = [4]
+val = 3 → return (3*2) = [6]
 
-{-
 やってることはmapと同じ！！！
 map f xs = do { x <- xs; return (f x) }
-
 _select は map と同じ操作を リストモナド + do記法 で書いたバージョンです。
--}
 
-{-
 実行例
 _select (*2) [1,2,3]
 →
