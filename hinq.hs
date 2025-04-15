@@ -148,8 +148,7 @@ _join data1 data2 prop1 prop2 = do
 
 -- 4 クエリの組み立てをSQLに近づける
 
-
--- _hinq関数はクエリの再構築を可能にする
+-- _hinq関数は、式の書き方をSQLに近づける
 _hinq selectQuery joinQuery whereQuery = (\joinData ->
                                             (\whereResult ->
                                                 selectQuery whereResult)
