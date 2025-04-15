@@ -149,35 +149,34 @@ _join data1 data2 prop1 prop2 = do
 -- 4 クエリの組み立てをSQLに近づける
 
 -- _hinq関数は、式の書き方をSQLに近づける
+-- ただし、where句がない場合に対処できない。Haskellではデフォルト引数も使えない。　
 _hinq selectQuery joinQuery whereQuery = (\joinData ->
                                             (\whereResult ->
                                                 selectQuery whereResult)
                                             (whereQuery joinData)
                                         ) joinQuery
-
 {-
+joinQuery を whereQuery に通し、それを selectQuery に渡す
+という 3ステップの処理を、関数合成せずにラムダ式で書いたものです。
+
+_hinq s j w = s (w j)
+これをラムダ式で書いていたので少し見慣れないだけでした！
+
+ラムダ式の順序
+joinData = joinQuery
+whereResult = whereQuery joinQuery
+output = selectQuery (whereQuery joinQuery)
+
 joinQueryの例
 joinQuery = [("Alice", 1), ("Bob", 2), ("Carol", 3)]
--}
 
-{-
 実行例
-
 selectQuery = map fst
 joinQuery = [("Alice", 1), ("Bob", 2), ("Carol", 3)]
 whereQuery = filter (\(_, id) -> id == 1)
-
 result = _hinq selectQuery joinQuery whereQuery
 => ["Alice"]
--}
 
-{-
-(\x -> f x) a == f a なのだから、
-_hinq select join where = select (where join)
-実態は関数適用しているだけ
--}
-
-{-
 ステップ 1：関数に joinQuery を渡す
 → (\whereResult -> selectQuery whereResult) (whereQuery [("Alice", 1), ("Bob", 2), ("Carol", 3)])
 
@@ -198,6 +197,10 @@ _hinq select join where
 → (\w -> select w) (where join)
 → select (where join)
 -}
+
+
+
+
 
 finalResult :: [Name]
 finalResult = _hinq (_select (teacherName . fst))
