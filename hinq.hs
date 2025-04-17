@@ -201,6 +201,8 @@ _hinq select join where
 
 
 
+-- 5 クエリを表すHINQ型を作成する
+
 
 finalResult :: [Name]
 finalResult = _hinq (_select (teacherName . fst))
@@ -208,7 +210,7 @@ finalResult = _hinq (_select (teacherName . fst))
                     (_where ((== "English") .courseTitle . snd))
 
 
--- モナドへ
+-- リストからモナドへ一般化
 import Control.Applicative
 -- _select :: ( a -> b ) -> [a] -> [b]
 _select :: Monad m => ( a -> b ) -> m a -> m b
