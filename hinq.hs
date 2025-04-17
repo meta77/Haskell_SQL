@@ -211,6 +211,7 @@ finalResult = _hinq (_select (teacherName . fst))
 
 
 -- リストからモナドへ一般化
+-- 型クラス制約を追加必要。
 import Control.Applicative
 -- _select :: ( a -> b ) -> [a] -> [b]
 _select :: Monad m => ( a -> b ) -> m a -> m b
