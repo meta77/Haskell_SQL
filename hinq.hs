@@ -232,7 +232,7 @@ do val <- [1,2,3,4]
 -- _join :: [a] -> [b] -> (a -> c) -> (b -> c) -> [(a, b)]
 _join :: (Monad m, Alternative m, Eq c) => m a -> m b -> (a -> c) -> (b -> c) -> m (a, b)
 
-
+-- やっとクエリのモデル化
 -- クエリを表す汎用的なHINQ型
 data HINQ m a b = HINQ (m a -> m b) (m a) (m a -> m a) | HINQ_ (m a -> m b) (m a)
 
