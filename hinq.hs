@@ -203,13 +203,7 @@ _hinq select join where
 
 -- 5 クエリを表すHINQ型を作成する
 
-
-finalResult :: [Name]
-finalResult = _hinq (_select (teacherName . fst))
-                    (_join teachers courses teacherId teacher)
-                    (_where ((== "English") .courseTitle . snd))
-
-
+-- 準備
 -- リストからモナドへ一般化
 -- 型クラス制約を追加必要。
 import Control.Applicative
@@ -237,3 +231,10 @@ do val <- [1,2,3,4]
 
 -- _join :: [a] -> [b] -> (a -> c) -> (b -> c) -> [(a, b)]
 _join :: (Monad m, Alternative m, Eq c) => m a -> m b -> (a -> c) -> (b -> c) -> m (a, b)
+
+
+
+finalResult :: [Name]
+finalResult = _hinq (_select (teacherName . fst))
+                    (_join teachers courses teacherId teacher)
+                    (_where ((== "English") .courseTitle . snd))
