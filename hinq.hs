@@ -268,6 +268,10 @@ possibleCourse :: Maybe Course
 possibleCourse = Just (head courses)
 
 -- Maybe型のクエリの例
+maybeQuery1 :: HINQ Maybe (Teacher, Course) Name
+maybeQuery1 :: HINQ (_select (teacherName . fst))
+                        (_join possibleTeacher possibleCourse teacherId teacher)
+                            (_where ((== "French") . courseTitle . snd))
 
 
 finalResult :: [Name]
