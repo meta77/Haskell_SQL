@@ -260,6 +260,15 @@ query1 は、「コースの中で "English" を担当している教師の名�
 
 
 
+-- HINQをMaybe型で使用する
+possibleTeacher :: Maybe Teacher
+possibleTeacher = Just (head teachers)
+
+possibleCourse :: Maybe Course
+possibleCourse = Just (head courses)
+
+-- Maybe型のクエリの例
+
 
 finalResult :: [Name]
 finalResult = _hinq (_select (teacherName . fst))
