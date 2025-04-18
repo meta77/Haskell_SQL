@@ -244,6 +244,8 @@ runHINQ (HINQ_ sClause jClause) = _hinq sClause jClause (_where (\_ -> True))
 
 
 
+-- 6 HINQクエリの実行
+
 
 finalResult :: [Name]
 finalResult = _hinq (_select (teacherName . fst))
