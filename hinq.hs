@@ -245,6 +245,12 @@ runHINQ (HINQ_ sClause jClause) = _hinq sClause jClause (_where (\_ -> True))
 
 
 -- 6 HINQクエリの実行
+-- クエリの例
+query1 :: HINQ [] (Teacher, Course) Name
+query1 :: HINQ (_select (teacherName . fst )) (_join teachers courses teacherId teacher) (_where (( == "English") .courseTitle . snd))
+
+
+
 
 
 finalResult :: [Name]
