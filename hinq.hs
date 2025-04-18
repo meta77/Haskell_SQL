@@ -249,6 +249,14 @@ runHINQ (HINQ_ sClause jClause) = _hinq sClause jClause (_where (\_ -> True))
 query1 :: HINQ [] (Teacher, Course) Name
 query1 :: HINQ (_select (teacherName . fst )) (_join teachers courses teacherId teacher) (_where (( == "English") .courseTitle . snd))
 
+{-
+クエリの意味
+query1 は、「コースの中で "English" を担当している教師の名前を取り出すクエリ」です！
+
+教師リスト teachers とコースリスト courses を結合し、
+コース名が "English" であるものを抽出し、
+該当する教師の名前を取り出すクエリ
+-}
 
 
 
