@@ -244,6 +244,11 @@ runHINQ (HINQ_ sClause jClause) = _hinq sClause jClause (_where (\_ -> True))
 
 
 
+
+
+
+
+
 -- 6 HINQクエリの実行
 -- クエリの例
 query1 :: HINQ [] (Teacher, Course) Name
@@ -259,7 +264,6 @@ query1 は、「コースの中で "English" を担当している教師の名�
 -}
 
 
-
 -- HINQをMaybe型で使用する
 possibleTeacher :: Maybe Teacher
 possibleTeacher = Just (head teachers)
@@ -272,6 +276,20 @@ maybeQuery1 :: HINQ Maybe (Teacher, Course) Name
 maybeQuery1 :: HINQ (_select (teacherName . fst))
                         (_join possibleTeacher possibleCourse teacherId teacher)
                             (_where ((== "French") . courseTitle . snd))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 finalResult :: [Name]
