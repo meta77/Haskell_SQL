@@ -299,6 +299,10 @@ enrollments = [
     (Enrollment 6 201)
 ]
 
+-- 生徒の名前と生徒が履修している科目を取得するクエリ
+studentEnrollmentsQ = HINQ_ (_select (\(st, en) -> (studentName st, course en)))
+    (_join students enrollments studentId student)
+
 
 
 
