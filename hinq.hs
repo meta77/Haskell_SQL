@@ -303,9 +303,18 @@ enrollments = [
 studentEnrollmentsQ = HINQ_ (_select (\(st, en) -> (studentName st, course en)))
     (_join students enrollments studentId student)
 
+{-
+_selectの例
+_select は map の別名なので、リストの各要素にこの関数を適用する
 
+(st, en) = (Student 1 "Alice", Enrollment 1 "Math")
+→
+(\(st, en) -> (studentName st, course en)) (Student 1 "Alice", Enrollment 1 "Math")
 
-
+st = Student 1 "Alice" → studentName st = "Alice"
+en = Enrollment 1 "Math" → course en = "Math"
+結果は：("Alice", "Math")
+-}
 
 
 
