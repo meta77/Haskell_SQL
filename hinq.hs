@@ -287,6 +287,17 @@ maybeQuery1 :: HINQ (_select (teacherName . fst))
 data Enrollment = Enrollment { student :: Int, course :: Int } deriving Show
 
 -- 履修dataを使って、履修者のリストを作成
+enrollments :: [Enrollment]
+enrollments = [
+    (Enrollment 1 101),
+    (Enrollment 2 101),
+    (Enrollment 2 201),
+    (Enrollment 3 101),
+    (Enrollment 4 201),
+    (Enrollment 4 101),
+    (Enrollment 5 101),
+    (Enrollment 6 201)
+]
 
 
 
