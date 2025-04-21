@@ -283,7 +283,10 @@ maybeQuery1 :: HINQ (_select (teacherName . fst))
 
 
 
+-- 履修のモデル化
+data Enrollment = Enrollment { student :: Int, course :: Int } deriving Show
 
+-- 履修dataを使って、履修者のリストを作成
 
 
 
