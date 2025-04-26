@@ -279,10 +279,6 @@ maybeQuery1 :: HINQ (_select (teacherName . fst))
 
 
 
-
-
-
-
 -- 履修のモデル化
 data Enrollment = Enrollment { student :: Int, course :: Int } deriving Show
 
